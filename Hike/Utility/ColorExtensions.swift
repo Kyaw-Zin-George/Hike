@@ -6,13 +6,16 @@
 //
 
 import Foundation
+import SwiftUI
 //colors names
+extension Color {
+    static let customGreenLight = Color("ColorGreenLight")
+    static let customGreenDark = Color("ColorGreenDark")
+    static let customGreenMedium = Color("ColorGreenMedium")
+    static let customIndigoMedium = Color("ColorIndigoMedium")
+    static let customSalmonLight = Color("ColorSalmonLight")
+    static let customGrayLight = Color("ColorGrayLight")
+    static let customGrayMedium = Color("ColorGrayMedium")
+}
 
-let indigoM = "ColorIndigoMedium"
-let salmonL = "ColorSalmonLight"
-let greenL = "ColorGreenLight"
-let greenM = "ColorGreenMedium"
-let greenD = "ColorGreenDark"
-let greyL = "ColorGreyLight"
-let greyM = "ColorGreyMedium"
 
