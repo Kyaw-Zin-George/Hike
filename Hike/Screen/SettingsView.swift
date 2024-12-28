@@ -49,7 +49,32 @@ struct SettingsView: View {
                     .frame(maxWidth: .infinity)
             }//: HEADER
             //MARK: - SECTION ICONS
-    
+            Section (
+                header: Text("ABOUT THE APP"),
+                footer: HStack{
+                    Spacer()
+                    Text("Copyright © All right reserved")
+                    Spacer()
+                }.padding(.vertical,8)
+            ){
+               //1. Basic Labeled Content
+               // LabeledContent("Application ", value: "Hike")
+                
+                //2. Advanced Labeled Content
+                CustomListRowView(rowLabel: "Application", rowIcon: "apps.iphone", rowContent: "HIKE", rowTintColor: .blue)
+                
+                CustomListRowView(rowLabel: "Compatibilty", rowIcon: "info.circle", rowContent: "iOS", rowTintColor: .red)
+                
+                CustomListRowView(rowLabel: "Technology", rowIcon: "swift", rowContent: "Swift", rowTintColor: .orange)
+                
+                CustomListRowView(rowLabel: "Version", rowIcon: "gear", rowContent: "1.0", rowTintColor: .purple)
+                
+                CustomListRowView(rowLabel: "Developer", rowIcon: "ellipsis.curlybraces", rowContent: "Kyaw Thant Zin", rowTintColor: .mint)
+                
+                CustomListRowView(rowLabel: "Designer", rowIcon: "paintpalette", rowContent: "Robert Petras", rowTintColor: .pink)
+                
+                CustomListRowView(rowLabel: "Website", rowIcon: "globe",rowContent: nil,rowTintColor: .indigo, rowLinkLabel: "Credo Academy", rowLinkDesination: "https://credo.academy")
+            }//Section
             //MARK: - SECTION ABOUT
         }.listRowSeparator(.hidden)
        
