@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct SettingsView: View {
+    //MARK: - Properties
+    private let alternateAppIcons: [String] = [
+        "AppIcon-MagnifyingGlass", "AppIcon-Map","AppIcon-Mushroom","AppIcon-Camera","AppIcon-Campfire","AppIcon-Backpack"]
+    
+    
     var body: some View {
         List {
             //MARK: - SECTION HEADER
@@ -49,6 +54,42 @@ struct SettingsView: View {
                     .frame(maxWidth: .infinity)
             }//: HEADER
             //MARK: - SECTION ICONS
+            Section(header: Text("Alternate Icons")){
+                ScrollView(.horizontal,showsIndicators: false){
+                    HStack (spacing: 12){
+                        ForEach(alternateAppIcons.indices, id: \.self) { icon in
+                            Button{
+                                print("The icon \(alternateAppIcons[icon]) was selected")
+                                
+                                UIApplication.shared.setAlternateIconName(alternateAppIcons[icon]){ error in
+                                    if error != nil {
+                                        print("Failed request to update the app's Icon: \(String(describing: error?.localizedDescription))")
+                                    } else{
+                                        print("Success! You have changed the app's icon to \(alternateAppIcons[icon]).")
+                                    }
+                                }
+                            }label: {
+                                Image("\(alternateAppIcons[icon])-Preview")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 80,height: 80)
+                                    .clipShape(RoundedRectangle(cornerRadius: 16))
+                            }
+                            .buttonStyle(.borderless)
+                        }
+                    }
+                }//:Scroll View
+                .padding(.top,12)
+                .padding(.bottom,12)
+                
+                Text("Choose the favorite icon from the collection above.")
+                    .frame(minWidth: 0, maxWidth: .infinity)
+                    .multilineTextAlignment(.center)
+                    .foregroundStyle(.secondary)
+                    .font(.footnote)
+            }
+            .listRowSeparator(.hidden)
+            //MARK: - SECTION ABOUT
             Section (
                 header: Text("ABOUT THE APP"),
                 footer: HStack{
@@ -75,7 +116,7 @@ struct SettingsView: View {
                 
                 CustomListRowView(rowLabel: "Website", rowIcon: "globe",rowContent: nil,rowTintColor: .indigo, rowLinkLabel: "Credo Academy", rowLinkDesination: "https://credo.academy")
             }//Section
-            //MARK: - SECTION ABOUT
+            
         }.listRowSeparator(.hidden)
        
     }
